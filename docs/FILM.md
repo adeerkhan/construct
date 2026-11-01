@@ -175,6 +175,25 @@ The tall page also sets its own type: the caption and labels are sized from the 
 (`vw`), so they read on a phone and in a 1080 x 1920 film. Nothing is burned in beyond the
 construct's own caption; titles and captions for the platform are yours.
 
+### The title slate
+
+A film can carry the title the person gave. `--title` sets it prominently and keeps the picture's
+datasets under it as a reference; the scene's own place labels and a few of its facts sit below
+the construct, so the empty part of a tall frame carries something to read:
+
+```sh
+python3 construct_hologram/cli.py video scene.json --out film-9x16.mp4 --format tiktok \
+    --title "Bab-e-Khyber (Khyber Gate)" \
+    --facts pass.length,landi_kotal.elevation,ali_masjid.elevation \
+    --assembly 30 --audio track-audio.json --sound track.wav
+```
+
+The title is split at a trailing parenthesis, so `Bab-e-Khyber (Khyber Gate)` sets
+**BAB-E-KHYBER** with **KHYBER GATE** beneath it. `--facts` names fact keys from the scene; without
+it the slate takes the first four verified facts that have a unit. The labels are the scene's
+identity annotations (its marked places), in scene order. The slate replaces the page's caption,
+which is hidden while it is on; without `--title` or `--facts` a film keeps the stock caption.
+
 ## Preview it in a browser
 
 You can watch the same thing live. Build the construct with film mode, put the features file next

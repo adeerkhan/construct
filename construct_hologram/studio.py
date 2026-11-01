@@ -460,6 +460,10 @@ def add_commands(sub):
                         "view, drifting and breathing; still: the view held, no motion (steady with --format tiktok)")
     p.add_argument("--reactivity", type=float, help="film mode, with --audio: how strongly the music shows, 0..2 "
                                                     "(default 1; 0 is an even build with no light or accents)")
+    p.add_argument("--title", help="set this title prominently in the film, with the picture's data sources as a "
+                                   "reference and the scene's labels and facts beneath the construct")
+    p.add_argument("--facts", help="with --title: the fact keys to print below the construct, comma separated "
+                                   "(default: the scene's four verified facts with a unit)")
     p = sub.add_parser("export", help="a 3D model: glTF (.glb) for Blender, game engines and the web, or OBJ "
                                       "(docs/EXPORT.md)")
     p.add_argument("scene")
@@ -1151,7 +1155,8 @@ def run(args):
             camera = args.camera or ("steady" if tall else "tour")
             seconds = args.seconds if args.seconds is not None else (args.assembly + 3.0 if args.assembly else 12.0)
             # film mode is embedded only when a film option asks for it; otherwise the stock page
-            film = bool(args.audio or args.assembly or camera == "steady" or args.reactivity is not None)
+            film = bool(args.audio or args.assembly or camera == "steady" or args.reactivity is not None
+                        or args.title or args.facts)
             with tempfile.TemporaryDirectory(prefix="hologram-video-") as tmp:
                 build(args.scene, tmp, args.asset_root, palette=args.palette, identity=args.identity, film=film)
                 w, h = (int(x) for x in size.lower().split("x"))
@@ -1165,6 +1170,13 @@ def run(args):
                     extra["camera"] = camera
                 if args.reactivity is not None:
                     extra["reactivity"] = "%g" % args.reactivity
+                if args.title or args.facts:
+                    extra["slate"] = "1"
+                    extra["caption"] = "0"  # the slate replaces the stock caption
+                    if args.title:
+                        extra["title"] = args.title
+                    if args.facts:
+                        extra["facts"] = args.facts
                 render.frames(page_in(tmp), str(Path(tmp, "frames")), seconds, fps,
                               args.start, w, h, view=args.view, extra=extra)
                 out.parent.mkdir(parents=True, exist_ok=True)

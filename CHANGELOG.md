@@ -527,6 +527,10 @@ side, printed as worksheets and cited. The story: [release notes](docs/releases/
   wide, so a page built without film mode is untouched. Tall pages set their caption
   and labels from the frame's width and put the caption at the top, so type reads at phone size. The scene and geometry contract keeps its id and keys; the
   new fields are additive.
+- **A film slate**: `video --title "..."` sets a person's title prominently, keeps the picture's
+  datasets under it as a reference, and prints the scene's place labels and chosen facts
+  (`--facts key,key`) below the construct, filling the empty part of a tall frame. The slate
+  replaces the stock caption.
 - **A 9:16 example**: `examples/films/khyber-pass/`, the Khyber Pass from NASA SRTM elevation
   and the OpenStreetMap road, rotated a quarter turn and framed for a tall film.
 

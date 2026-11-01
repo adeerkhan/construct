@@ -33,7 +33,11 @@
     steady: q.get("camera") === "steady",
     reactivity: q.has("reactivity") ? clamp(parseFloat(q.get("reactivity")) || 0, 0, 2) : 1,
   };
-  if (!FILM.assembly && !FILM.audio && !FILM.steady) return;  // no film option: the stock viewer, untouched
+  const SLATE = q.get("slate") === "1" ? {
+    title: q.get("title") || null,
+    facts: (q.get("facts") || "").split(",").map((x) => x.trim()).filter(Boolean),
+  } : null;
+  if (!FILM.assembly && !FILM.audio && !FILM.steady && !SLATE) return;  // no film option: the stock viewer, untouched
   const P = HV.Hologram.prototype;
   const SCAN = 1, SHIMMER = 4;  // the viewer's event codes
   const SMOOTH_S = 2.0, ACCENT_S = 0.2, PACE = 4;
@@ -200,6 +204,63 @@
     try { return ownCamera.call(this, t, base); } finally { cam.tour = own; }
   };
 
+  // ------------------------------------------------------------------ the slate
+  // A film can carry a title the person gave, the picture's data sources as a reference, and the
+  // scene's own labels and facts. It replaces the page's caption when it is on.
+  function node(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function factName(key) {
+    const bits = String(key).split(".");
+    const head = bits[0].replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const tail = bits.slice(1).join(" ").replace(/_/g, " ");
+    return head + (tail ? " " + tail : "");
+  }
+  function factValue(f) {
+    const v = typeof f.value === "number" && !Number.isInteger(f.value) ? f.value.toFixed(1) : f.value;
+    const n = typeof f.value === "number" ? Number(v).toLocaleString("en-US") : v;
+    return f.unit ? n + " " + f.unit : String(n);
+  }
+  function buildSlate() {
+    const holo = window.HOLO && window.HOLO.hologram;
+    if (!SLATE || !holo) return;
+    const geo = holo.geo, wrap = node("div", "filmslate");
+    const text = (SLATE.title || geo.title || "").trim();
+    const split = text.match(/^(.*?)\s*\((.+)\)\s*$/);
+    const data = (geo.provenance.sources || []).filter((s) => s.kind === "dataset").map((s) => s.title);
+    const all = geo.provenance.facts || [];
+    const picked = SLATE.facts.length
+      ? SLATE.facts.map((k) => all.find((f) => f.key === k)).filter(Boolean)
+      : all.filter((f) => f.certainty === "verified" && f.unit && !String(f.key).startsWith("terrain.")).slice(0, 4);
+    const labels = (geo.annotations || []).filter((a) => {
+      const part = (geo.parts || []).find((p) => p.id === a.part);
+      return !part || part.role === "identity";
+    }).map((a) => a.text);
+    const head = node("div", "head");
+    head.appendChild(node("div", "title", split ? split[1] : text));
+    if (split) head.appendChild(node("div", "subtitle", split[2]));
+    if (data.length) head.appendChild(node("div", "data", "DATA \u00b7 " + data.join("  \u00b7  ")));
+    wrap.appendChild(head);
+    const info = node("div", "info");
+    info.appendChild(node("div", "rule"));
+    if (labels.length) info.appendChild(node("div", "labels", labels.join("  \u00b7  ").toUpperCase()));
+    if (picked.length) {
+      const row = node("div", "facts");
+      for (const f of picked) {
+        const chip = node("span", "fact");
+        chip.appendChild(node("b", null, factValue(f)));
+        chip.appendChild(node("span", "k", factName(f.key)));
+        row.appendChild(chip);
+      }
+      info.appendChild(row);
+    }
+    wrap.appendChild(info);
+    document.getElementById("overlay").appendChild(wrap);
+  }
+
   // ------------------------------------------------------------------ after the viewer has started
   function start() {
     const holo = window.HOLO && window.HOLO.hologram;
@@ -214,6 +275,7 @@
     };
     sizeClass();
     window.addEventListener("resize", sizeClass);
+    buildSlate();
     holo.schedule = holo.buildSchedule();  // the idle life begins after the film's assembly
     if (FILM.audio) {
       window.HOLO_AUDIO_READY = fetch(FILM.audio).then((res) => res.json())

@@ -193,6 +193,14 @@ class Cli(unittest.TestCase):
         seen = self.page("--audio", "AUDIO", "--reactivity", "1.5")
         self.assertEqual(seen, {"film": True, "extra": {"audio": "audio.json", "reactivity": "1.5"}})
 
+    def test_a_title_turns_on_the_film_slate(self):
+        seen = self.page("--title", "Bab-e-Khyber (Khyber Gate)")
+        self.assertTrue(seen["film"])
+        self.assertEqual(seen["extra"], {"slate": "1", "caption": "0", "title": "Bab-e-Khyber (Khyber Gate)"})
+        seen = self.page("--facts", "pass.length,road.length")
+        self.assertTrue(seen["film"])
+        self.assertEqual(seen["extra"], {"slate": "1", "caption": "0", "facts": "pass.length,road.length"})
+
     def test_the_tiktok_preset_is_a_tall_steady_film(self):
         seen = self.video_page("--format", "tiktok")
         self.assertEqual((seen["size"], seen["fps"]), ([1080, 1920], 30))

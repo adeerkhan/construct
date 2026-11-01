@@ -1,7 +1,8 @@
 # Khyber Pass — a 9:16 film
 
 The Khyber Pass assembling across a 32-second cue, framed for a tall screen (1080 × 1920).
-Jamrud, Ali Masjid, Landi Kotal and Torkham are marked along the road that carries the pass.
+Jamrud, Bab-e-Khyber, Ali Masjid, Landi Kotal and Torkham are marked along the road that carries
+the pass.
 
 | file | what it is |
 | --- | --- |
@@ -16,15 +17,18 @@ python3 construct_hologram/cli.py audio examples/films/khyber-pass/khyber-pass.w
     --out examples/films/khyber-pass/khyber-audio.json --fps 30
 
 python3 construct_hologram/cli.py video examples/films/khyber-pass/scene.json \
-    --out khyber-pass-9x16.mp4 --format tiktok --assembly 30 --seconds 32 \
+    --out renders/khyber-pass-9x16.mp4 --format tiktok --assembly 30 --seconds 32 \
     --audio examples/films/khyber-pass/khyber-audio.json \
-    --sound examples/films/khyber-pass/khyber-pass.wav --labels
+    --sound examples/films/khyber-pass/khyber-pass.wav \
+    --title "Bab-e-Khyber (Khyber Gate)" \
+    --facts pass.length,landi_kotal.elevation,ali_masjid.elevation,jamrud_fort.wall
 ```
 
 `--format tiktok` is 1080 × 1920 at 30 fps with the steady camera. The scene's
-`presentation.framing.portrait` block (`yaw` 0, `pitch` 40, `fit` 0.95) looks up the pass from
+`presentation.framing.portrait` block (`yaw` 0, `pitch` 40, `fit` 0.98) looks up the pass from
 Jamrud to Torkham; the terrain is turned a quarter turn in the scene so its length runs up the
-frame instead of across it.
+frame instead of across it. `--title` sets the person's title with the data as a reference, and
+puts the place labels and the chosen facts below the construct.
 
 ## What is evidence, what is designed
 

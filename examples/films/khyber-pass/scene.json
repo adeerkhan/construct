@@ -69,6 +69,13 @@
       "ref": "https://en.wikipedia.org/wiki/Jamrud_Fort - foundation laid by Hari Singh Nalwa on 18 December 1836, completed in 54 days, walls 10 ft (3 m) thick, originally named Fatehgarh."
     },
     {
+      "id": "wiki-bab",
+      "kind": "document",
+      "title": "Bab-e-Khyber - Wikipedia",
+      "rights": "reference_only",
+      "ref": "https://en.wikipedia.org/wiki/Bab-e-Khyber - the Khyber Gate at the entrance of the pass, beside Jamrud Fort; inaugurated by Field Marshal Ayub Khan on 11 June 1963."
+    },
+    {
       "id": "design",
       "kind": "generated",
       "title": "Scene author's staging",
@@ -168,6 +175,13 @@
       "value": 1.35,
       "certainty": "decorative",
       "note": "1 means true heights"
+    },
+    {
+      "key": "bab_e_khyber.opened",
+      "value": 1963,
+      "certainty": "verified",
+      "source": "wiki-bab",
+      "note": "inaugurated by Field Marshal Ayub Khan on 11 June 1963"
     }
   ],
   "parts": [
@@ -4235,23 +4249,37 @@
       ],
       "source": "wiki-torkham",
       "note": "The border crossing with Afghanistan, 5 km west of the summit. Position 34.1217, 71.1031."
+    },
+    {
+      "id": "mark-5",
+      "label": "Bab-e-Khyber",
+      "role": "identity",
+      "certainty": "verified",
+      "source": "wiki-bab",
+      "stage": 3,
+      "shape": {
+        "type": "marker",
+        "sprite": "ring",
+        "size_px": 14
+      },
+      "at": [
+        -2.5268366058214737,
+        0.43363,
+        5.189189189189101
+      ],
+      "note": "The Khyber Gate, at the entrance of the pass beside Jamrud Fort; inaugurated on 11 June 1963. Position 34.0025, 71.3800."
     }
   ],
   "annotations": [
     {
-      "id": "high-point",
-      "text": "High point 2,064 m",
-      "part": "high-point"
-    },
-    {
-      "id": "route",
-      "text": "Khyber Pass road",
-      "part": "route"
-    },
-    {
       "id": "mark-1",
       "text": "Jamrud",
       "part": "mark-1"
+    },
+    {
+      "id": "mark-5",
+      "text": "Bab-e-Khyber",
+      "part": "mark-5"
     },
     {
       "id": "mark-2",
@@ -4267,6 +4295,16 @@
       "id": "mark-4",
       "text": "Torkham",
       "part": "mark-4"
+    },
+    {
+      "id": "high-point",
+      "text": "High point 2,064 m",
+      "part": "high-point"
+    },
+    {
+      "id": "route",
+      "text": "Khyber Pass road",
+      "part": "route"
     }
   ],
   "presentation": {
@@ -4277,10 +4315,10 @@
       "portrait": {
         "yaw": 0,
         "pitch": 40,
-        "fit": 0.95,
+        "fit": 0.98,
         "shift": [
           0,
-          0.03
+          0.06
         ]
       }
     },
