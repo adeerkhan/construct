@@ -1,0 +1,942 @@
+{
+  "format": "construct-scene",
+  "version": 2,
+  "id": "faisal-masjid",
+  "title": "Faisal Masjid",
+  "subject": {
+    "category": "architecture",
+    "accuracy": "approximate",
+    "synthetic": false,
+    "summary": "The Faisal Mosque in Islamabad: the national mosque of Pakistan, an eight-sided concrete shell shaped like a Bedouin tent and four 90 m minarets, with a walled courtyard and porticoes before the prayer hall. Documented dimensions where a source gives them; the shell's curve, the portico bays and the site are a reconstruction."
+  },
+  "units": "m",
+  "seed": 1976,
+  "sources": [
+    {
+      "id": "request",
+      "kind": "user_request",
+      "title": "The user's request",
+      "rights": "user_private",
+      "ref": "A construct and a 9:16 film of Faisal Masjid, Islamabad."
+    },
+    {
+      "id": "wiki",
+      "kind": "document",
+      "title": "Wikipedia",
+      "rights": "reference_only",
+      "ref": "https://en.wikipedia.org/wiki/Faisal_Mosque - national mosque, Vedat Dalokay, 1976-1986, first prayer 18 June 1988, eight-sided tent-shaped shell with no dome, four 90 m minarets, 10,000 in the hall, 300,000 total, 130,000 m2, entrance from the east with a courtyard and porticoes, four concrete girders."
+    },
+    {
+      "id": "hall",
+      "kind": "document",
+      "title": "Alluring World",
+      "rights": "reference_only",
+      "ref": "https://www.alluringworld.com/faisal-mosque/ - the main hall is 40 m (131 ft) tall, supported by four concrete girders."
+    },
+    {
+      "id": "c20",
+      "kind": "document",
+      "title": "Twentieth Century Society",
+      "rights": "reference_only",
+      "ref": "https://c20society.org.uk/building-of-the-month/king-faisal-mosque-islamabad - the galleries of the pencil-shaped minarets sit almost 60 m above ground."
+    },
+    {
+      "id": "design",
+      "kind": "generated",
+      "title": "Scene author's reconstruction",
+      "rights": "synthetic",
+      "ref": "The shell's straight-faced simplification, the portico bays, stair, site platform and staging. No photograph or artwork is embedded."
+    }
+  ],
+  "facts": [
+    {
+      "key": "minaret.height",
+      "value": 90,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "four minarets, 90 m (300 ft), the tallest in South Asia"
+    },
+    {
+      "key": "minaret.count",
+      "value": 4,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "hall.height",
+      "value": 40,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "hall"
+    },
+    {
+      "key": "hall.capacity",
+      "value": 10000,
+      "unit": "worshippers",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "mosque.capacity",
+      "value": 300000,
+      "unit": "worshippers",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "site.area",
+      "value": 130000,
+      "unit": "m²",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "roof.sides",
+      "value": 8,
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "an eight-sided concrete shell, a Bedouin tent rather than a dome"
+    },
+    {
+      "key": "construction.start",
+      "value": 1976,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "construction.completed",
+      "value": 1986,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "first_prayer",
+      "value": "18 June 1988",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "architect",
+      "value": "Vedat Dalokay",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "minaret.gallery",
+      "value": 60,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "c20",
+      "note": "the visitors' gallery sits almost 60 m above ground"
+    },
+    {
+      "key": "shell.wall",
+      "value": "straight-faced simplification",
+      "certainty": "decorative",
+      "note": "the real shell is curved; this construct folds it into planes"
+    }
+  ],
+  "parts": [
+    {
+      "id": "site",
+      "label": "Site platform",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          152,
+          2,
+          146
+        ],
+        "anchor": "base",
+        "ribs": 10
+      },
+      "at": [
+        0,
+        0,
+        8
+      ],
+      "note": "a 152 x 146 m platform standing in for the mosque's terraced grounds."
+    },
+    {
+      "id": "courtyard",
+      "label": "Courtyard",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "grid",
+        "size": [
+          118,
+          76
+        ],
+        "divisions": 20
+      },
+      "at": [
+        0,
+        2.02,
+        40
+      ],
+      "note": "the paved courtyard before the prayer hall, fronted by porticoes."
+    },
+    {
+      "id": "stair-1",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          44,
+          0.5,
+          1.5
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        0,
+        92.0
+      ],
+      "note": "the broad stair up to the platform."
+    },
+    {
+      "id": "stair-2",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          44,
+          1.0,
+          1.5
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        0,
+        90.4
+      ],
+      "note": "the broad stair up to the platform."
+    },
+    {
+      "id": "stair-3",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          44,
+          1.5,
+          1.5
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        0,
+        88.8
+      ],
+      "note": "the broad stair up to the platform."
+    },
+    {
+      "id": "stair-4",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          44,
+          2.0,
+          1.5
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        0,
+        87.2
+      ],
+      "note": "the broad stair up to the platform."
+    },
+    {
+      "id": "hall-base",
+      "label": "Prayer hall base",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "hall.capacity"
+      ],
+      "shape": {
+        "type": "box",
+        "size": [
+          72,
+          4,
+          72
+        ],
+        "anchor": "base",
+        "ribs": 12
+      },
+      "at": [
+        0,
+        2,
+        -30
+      ]
+    },
+    {
+      "id": "shell-front",
+      "label": "Prayer hall",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "hall.height",
+        "roof.sides"
+      ],
+      "shape": {
+        "type": "shell",
+        "span": 62,
+        "height": 40,
+        "reach": 31,
+        "bulge": 0.12,
+        "ribs": 12,
+        "rows": 7
+      },
+      "at": [
+        0,
+        6,
+        -1
+      ],
+      "rotate": [
+        0,
+        0,
+        0
+      ],
+      "note": "one of the four curved faces of the eight-sided tent shell; 40 m above ground at the apex. The real shell is a folded concrete surface, simplified here to four sails."
+    },
+    {
+      "id": "shell-back",
+      "label": "Prayer hall",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "hall.height",
+        "roof.sides"
+      ],
+      "shape": {
+        "type": "shell",
+        "span": 62,
+        "height": 40,
+        "reach": 31,
+        "bulge": 0.12,
+        "ribs": 12,
+        "rows": 7
+      },
+      "at": [
+        0,
+        6,
+        -59
+      ],
+      "rotate": [
+        0,
+        180,
+        0
+      ],
+      "note": "one of the four curved faces of the eight-sided tent shell; 40 m above ground at the apex. The real shell is a folded concrete surface, simplified here to four sails."
+    },
+    {
+      "id": "shell-right",
+      "label": "Prayer hall",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "hall.height",
+        "roof.sides"
+      ],
+      "shape": {
+        "type": "shell",
+        "span": 62,
+        "height": 40,
+        "reach": 31,
+        "bulge": 0.12,
+        "ribs": 12,
+        "rows": 7
+      },
+      "at": [
+        29,
+        6,
+        -30
+      ],
+      "rotate": [
+        0,
+        90,
+        0
+      ],
+      "note": "one of the four curved faces of the eight-sided tent shell; 40 m above ground at the apex. The real shell is a folded concrete surface, simplified here to four sails."
+    },
+    {
+      "id": "shell-left",
+      "label": "Prayer hall",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "hall.height",
+        "roof.sides"
+      ],
+      "shape": {
+        "type": "shell",
+        "span": 62,
+        "height": 40,
+        "reach": 31,
+        "bulge": 0.12,
+        "ribs": 12,
+        "rows": 7
+      },
+      "at": [
+        -29,
+        6,
+        -30
+      ],
+      "rotate": [
+        0,
+        -90,
+        0
+      ],
+      "note": "one of the four curved faces of the eight-sided tent shell; 40 m above ground at the apex. The real shell is a folded concrete surface, simplified here to four sails."
+    },
+    {
+      "id": "shell-eave",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "cylinder",
+        "radius": 43,
+        "height": 1.4,
+        "segments": 8,
+        "rings": 1
+      },
+      "at": [
+        0,
+        4.6,
+        -30
+      ],
+      "note": "the flared collar where the shell meets the hall."
+    },
+    {
+      "id": "girder-1",
+      "role": "structure",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 0,
+      "basis": [
+        "hall.height"
+      ],
+      "shape": {
+        "type": "box",
+        "size": [
+          72,
+          1.4,
+          2.2
+        ]
+      },
+      "at": [
+        0,
+        5.4,
+        -30
+      ],
+      "rotate": [
+        0,
+        45,
+        0
+      ],
+      "note": "one of the four concrete girders under the shell."
+    },
+    {
+      "id": "girder-2",
+      "role": "structure",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 0,
+      "basis": [
+        "hall.height"
+      ],
+      "shape": {
+        "type": "box",
+        "size": [
+          72,
+          1.4,
+          2.2
+        ]
+      },
+      "at": [
+        0,
+        5.4,
+        -30
+      ],
+      "rotate": [
+        0,
+        -45,
+        0
+      ],
+      "mirror": "x"
+    },
+    {
+      "id": "portal",
+      "label": "Entrance",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "facade",
+        "size": [
+          30,
+          17
+        ],
+        "rows": 1,
+        "cols": 1,
+        "opening": [
+          10,
+          12
+        ],
+        "arch": "pointed",
+        "kind": "arcade"
+      },
+      "at": [
+        0,
+        6,
+        6.1
+      ],
+      "note": "the great pointed portal on the east face, under the tent."
+    },
+    {
+      "id": "hall-stair-1",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          30,
+          0.8,
+          1.4
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        2,
+        7.0
+      ],
+      "note": "steps from the courtyard to the portal."
+    },
+    {
+      "id": "hall-stair-2",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          30,
+          1.6,
+          1.4
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        2,
+        8.5
+      ],
+      "note": "steps from the courtyard to the portal."
+    },
+    {
+      "id": "hall-stair-3",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          30,
+          2.4000000000000004,
+          1.4
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        2,
+        10.0
+      ],
+      "note": "steps from the courtyard to the portal."
+    },
+    {
+      "id": "hall-stair-4",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          30,
+          3.2,
+          1.4
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        2,
+        11.5
+      ],
+      "note": "steps from the courtyard to the portal."
+    },
+    {
+      "id": "portico-east-cols",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "cylinder",
+        "radius": 0.75,
+        "height": 9,
+        "segments": 12,
+        "ribs": 2
+      },
+      "at": [
+        -44,
+        2,
+        78
+      ],
+      "repeat": {
+        "count": 12,
+        "step": {
+          "at": [
+            8,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "portico-east-roof",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "box",
+        "size": [
+          110,
+          1.2,
+          7
+        ]
+      },
+      "at": [
+        0,
+        11,
+        78
+      ]
+    },
+    {
+      "id": "portico-side-cols",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "cylinder",
+        "radius": 0.75,
+        "height": 9,
+        "segments": 12,
+        "ribs": 2
+      },
+      "at": [
+        54,
+        2,
+        12
+      ],
+      "repeat": {
+        "count": 8,
+        "step": {
+          "at": [
+            0,
+            0,
+            8
+          ]
+        }
+      },
+      "mirror": "x"
+    },
+    {
+      "id": "portico-side-roof",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "box",
+        "size": [
+          7,
+          1.2,
+          72
+        ]
+      },
+      "at": [
+        54,
+        11,
+        44
+      ],
+      "mirror": "x"
+    },
+    {
+      "id": "minaret-shaft",
+      "label": "Minarets",
+      "role": "identity",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 2,
+      "basis": [
+        "minaret.height",
+        "minaret.count"
+      ],
+      "shape": {
+        "type": "tower",
+        "radius": 4.4,
+        "height": 58,
+        "sides": 4,
+        "taper": 0.9,
+        "eave": 0,
+        "roof": "none"
+      },
+      "at": [
+        40,
+        2,
+        10
+      ],
+      "repeat": {
+        "count": 4,
+        "radial": {
+          "axis": "y",
+          "center": [
+            0,
+            0,
+            -30
+          ],
+          "span": 360
+        }
+      },
+      "note": "four pencil-shaped minarets, 90 m above the platform; the square shaft is 7 m across the corners."
+    },
+    {
+      "id": "minaret-balcony",
+      "role": "detail",
+      "certainty": "verified",
+      "source": "c20",
+      "stage": 2,
+      "basis": [
+        "minaret.gallery"
+      ],
+      "shape": {
+        "type": "cylinder",
+        "radius": 5.9,
+        "height": 1.4,
+        "segments": 8
+      },
+      "at": [
+        40,
+        60,
+        10
+      ],
+      "repeat": {
+        "count": 4,
+        "radial": {
+          "axis": "y",
+          "center": [
+            0,
+            0,
+            -30
+          ],
+          "span": 360
+        }
+      },
+      "note": "the gallery balcony, almost 60 m above ground."
+    },
+    {
+      "id": "minaret-cap",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "lathe",
+        "profile": [
+          [
+            3.4,
+            0
+          ],
+          [
+            2.7,
+            1.2
+          ],
+          [
+            1.5,
+            2.8
+          ],
+          [
+            0.5,
+            4.6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": 16,
+        "meridians": 8
+      },
+      "at": [
+        40,
+        86,
+        10
+      ],
+      "repeat": {
+        "count": 4,
+        "radial": {
+          "axis": "y",
+          "center": [
+            0,
+            0,
+            -30
+          ],
+          "span": 360
+        }
+      },
+      "note": "the small pointed cap on each minaret."
+    },
+    {
+      "id": "minaret-upper",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "tower",
+        "radius": 3.96,
+        "height": 24.6,
+        "sides": 4,
+        "taper": 0.85,
+        "eave": 0,
+        "roof": "none"
+      },
+      "at": [
+        40,
+        61.4,
+        10
+      ],
+      "repeat": {
+        "count": 4,
+        "radial": {
+          "axis": "y",
+          "center": [
+            0,
+            0,
+            -30
+          ],
+          "span": 360
+        }
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-hall",
+      "text": "Prayer hall",
+      "part": "shell-front"
+    },
+    {
+      "id": "a-minarets",
+      "text": "Minarets 90 m",
+      "part": "minaret-shaft"
+    },
+    {
+      "id": "a-court",
+      "text": "Courtyard",
+      "part": "courtyard"
+    },
+    {
+      "id": "a-portal",
+      "text": "Entrance",
+      "part": "portal"
+    }
+  ],
+  "presentation": {
+    "framing": {
+      "yaw": 24,
+      "pitch": 9,
+      "fit": 0.95,
+      "portrait": {
+        "yaw": 20,
+        "pitch": 8,
+        "fit": 0.55,
+        "shift": [
+          0,
+          0.08
+        ]
+      }
+    },
+    "atmosphere": {
+      "haze": 0.65,
+      "motes": 0.35
+    }
+  },
+  "animation": {
+    "assembly": {
+      "style": "ceremony",
+      "seconds": 7.0,
+      "interference": true
+    },
+    "idle": {
+      "life": "calm",
+      "events": [
+        "scan",
+        "sweep",
+        "shimmer"
+      ],
+      "cadence": [
+        6,
+        12
+      ],
+      "strength": 0.45
+    },
+    "camera": {
+      "drift": 3,
+      "breathe": 0.02
+    }
+  },
+  "authoring": {
+    "tier": "standard",
+    "research": "done",
+    "sources": [
+      "wiki",
+      "hall",
+      "c20"
+    ],
+    "review_rounds": 0,
+    "outcome": "self-reviewed",
+    "next": [
+      "the real shell is curved; this is a straight-faced fold",
+      "the interior, mosaics and Qibla tiles are not modelled",
+      "the Margalla Hills backdrop is left to the page's atmosphere"
+    ]
+  }
+}

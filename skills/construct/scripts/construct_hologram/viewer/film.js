@@ -230,14 +230,15 @@
     const geo = holo.geo, wrap = node("div", "filmslate");
     const text = (SLATE.title || geo.title || "").trim();
     const split = text.match(/^(.*?)\s*\((.+)\)\s*$/);
-    const data = (geo.provenance.sources || []).filter((s) => s.kind === "dataset").map((s) => s.title);
+    let data = (geo.provenance.sources || []).filter((s) => s.kind === "dataset").map((s) => s.title);
+    if (!data.length) data = (geo.provenance.sources || []).filter((s) => s.kind === "document").map((s) => s.title);
     const all = geo.provenance.facts || [];
     const picked = SLATE.facts.length
       ? SLATE.facts.map((k) => all.find((f) => f.key === k)).filter(Boolean)
       : all.filter((f) => f.certainty === "verified" && f.unit && !String(f.key).startsWith("terrain.")).slice(0, 4);
     const labels = (geo.annotations || []).filter((a) => {
       const part = (geo.parts || []).find((p) => p.id === a.part);
-      return !part || part.role === "identity";
+      return !part || part.role === "identity" || part.role === "ground";
     }).map((a) => a.text);
     const head = node("div", "head");
     head.appendChild(node("div", "title", split ? split[1] : text));
