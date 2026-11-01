@@ -620,6 +620,22 @@ class Contract02(unittest.TestCase):
         self.assertIn(("style-hint-ignored", "$.presentation.style_hint"), {(x["code"], x["path"]) for x in d["diagnostics"]})
         self.assertTrue(d["ok"])
 
+    def test_a_scene_can_compose_itself_for_a_tall_frame(self):
+        # a phone/story/TikTok frame: the same camera keys, plus a screen-space shift for the safe area
+        s = base(presentation={"framing": {"yaw": 20, "pitch": 15, "fit": 1.0,
+                                          "portrait": {"yaw": 0, "pitch": 40, "fit": 0.95, "target": "body",
+                                                       "shift": [0, 0.05]}}})
+        self.assertEqual(scene.validate(s), [])
+        g = scene.compile_scene(s)
+        fr = g["presentation"]["framing"]
+        self.assertEqual((fr["yaw"], fr["pitch"]), (20, 15))                      # wide framing untouched
+        self.assertEqual(fr["portrait"]["pitch"], 40)
+        self.assertEqual(fr["portrait"]["target"], "body")
+        self.assertEqual(fr["portrait"]["shift"], [0, 0.05])
+        for bad in ({"shift": [0.0]}, {"shift": [2, 0]}, {"target": "nope"}, {"yaw": "left"}):
+            errs = scene.validate(base(presentation={"framing": {"portrait": bad}}))
+            self.assertTrue(any("portrait" in e for e in errs), (bad, errs))
+
     def test_a_person_can_choose_a_palette_through_the_host(self):
         with tempfile.TemporaryDirectory() as d:
             Path(d, "s.json").write_text(json.dumps(base()))

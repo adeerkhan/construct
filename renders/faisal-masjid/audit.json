@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "evidence_backed_key_parts": "1 of 10",
+    "dimensions_m": {
+      "width": 152.0,
+      "height": 90.0,
+      "depth": 168.65
+    },
+    "counts": {
+      "lines": 2044,
+      "triangles": 834,
+      "points": 0,
+      "motions": 0,
+      "articulations": 0,
+      "labels": 0,
+      "instances": 67
+    },
+    "parts": 27,
+    "stages": [
+      0,
+      1,
+      2,
+      3
+    ]
+  }
+}

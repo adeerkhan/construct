@@ -194,6 +194,11 @@ Work in a folder of your own. `out/construct.html` opens in any browser.
    keeps the whole construct in view; `tour` plays the scene's own camera flights. Leave
    `--reactivity` at its default unless the user asks for a calmer (0.5) or stronger (1.5) film.
    It renders about a frame or two a second, so say how long it will take before starting.
+   For a **tall social film (TikTok, Reels, Shorts)** use `--format tiktok` instead of the size
+   and camera (1080 x 1920 at 30 fps, steady), and give a wide subject a
+   `presentation.framing.portrait` block: turn a long subject to run up the frame, look along it
+   with a higher pitch, and `shift` it clear of the player's controls at the bottom and right.
+   The tall page puts its caption at the top and scales its type from the frame width.
    Review it by sampling frames (`ffmpeg -i film.mp4 -vf fps=1/10 frame-%02d.png`) and look at
    them with `vision_analyze`: the build should visibly move with the music and end whole.
 8. **A 3D model (only when asked).** `scripts/cli.py export scene.json --out model.glb` writes

@@ -1086,7 +1086,7 @@ def _presentation_check(c, pr, part_ids):
     if "float" in pr:
         c.num(pr["float"], w + ".float", 0, MAX_EXTENT)
     fr = pr.get("framing", {})
-    if c.keys(fr, {"yaw", "pitch", "fit", "target"}, set(), w + ".framing"):
+    if c.keys(fr, {"yaw", "pitch", "fit", "target", "portrait"}, set(), w + ".framing"):
         if "yaw" in fr:
             c.num(fr["yaw"], w + ".framing.yaw", -360, 360)
         if "pitch" in fr:
@@ -1095,6 +1095,29 @@ def _presentation_check(c, pr, part_ids):
             c.num(fr["fit"], w + ".framing.fit", 0.3, 3)
         if "target" in fr and fr["target"] not in part_ids:
             c.err(w + ".framing.target", "unknown part %r" % fr["target"])
+        # a tall frame (a phone, a story, a TikTok) can compose the construct differently: the same
+        # camera keys, plus a screen-space shift for the safe area around it
+        portrait = fr.get("portrait")
+        if portrait is not None:
+            pw = w + ".framing.portrait"
+            if not isinstance(portrait, dict):
+                c.err(pw, "expected an object of yaw, pitch, fit, target, shift")
+            elif c.keys(portrait, {"yaw", "pitch", "fit", "target", "shift"}, set(), pw):
+                if "yaw" in portrait:
+                    c.num(portrait["yaw"], pw + ".yaw", -360, 360)
+                if "pitch" in portrait:
+                    c.num(portrait["pitch"], pw + ".pitch", -89, 89)
+                if "fit" in portrait:
+                    c.num(portrait["fit"], pw + ".fit", 0.3, 3)
+                if "target" in portrait and portrait["target"] not in part_ids:
+                    c.err(pw + ".target", "unknown part %r" % portrait["target"])
+                if "shift" in portrait:
+                    sh = portrait["shift"]
+                    if not isinstance(sh, list) or len(sh) != 2:
+                        c.err(pw + ".shift", "expected [x, y], in fractions of the half-viewport")
+                    else:
+                        for i, v in enumerate(sh):
+                            c.num(v, "%s.shift[%d]" % (pw, i), -0.9, 0.9)
     views = pr.get("views", [])
     seen = set()
     if not isinstance(views, list) or len(views) > MAX_VIEWS:
@@ -2019,9 +2042,12 @@ def _normal_presentation(scene):
     pr = scene.get("presentation", {})
     at = pr.get("atmosphere", {})
     fr = pr.get("framing", {})
+    framing = {"yaw": fr.get("yaw", 35.0), "pitch": fr.get("pitch", 18.0), "fit": fr.get("fit", 1.0),
+               "target": fr.get("target")}
+    if isinstance(fr.get("portrait"), dict):
+        framing["portrait"] = dict(fr["portrait"])
     out = {
-        "framing": {"yaw": fr.get("yaw", 35.0), "pitch": fr.get("pitch", 18.0), "fit": fr.get("fit", 1.0),
-                    "target": fr.get("target")},
+        "framing": framing,
         "views": [dict(v) for v in pr.get("views", [])],
         "atmosphere": {"haze": at.get("haze", 0.7), "scanlines": at.get("scanlines", True),
                        "vignette": at.get("vignette", True), "grid": at.get("grid", True),

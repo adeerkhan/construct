@@ -517,6 +517,18 @@ side, printed as worksheets and cited. The story: [release notes](docs/releases/
 - **A provenance note:** `authoring.provenance_note`, shown under the caption in the provenance view
   only. Seven gallery constructs made before 1.1 carry one saying where their shades understate their
   evidence (parts that do not cite what they were read from, traced parts never compared).
+## Unreleased
+
+- **Vertical film mode for TikTok, Reels and Shorts** ([FILM.md](docs/FILM.md#vertical-films-916-for-tiktok-reels-and-shorts)):
+  `video --format tiktok` renders 1080 x 1920 at 30 fps with the steady camera (an explicit
+  `--size`, `--fps` or `--camera` still wins). A scene can compose itself for a tall frame with
+  `presentation.framing.portrait` (the usual `yaw`, `pitch`, `fit` and `target`, plus a
+  screen-space `shift` for the safe area); it applies whenever a film page is taller than it is
+  wide, so a page built without film mode is untouched. Tall pages set their caption
+  and labels from the frame's width and put the caption at the top, so type reads at phone size. The scene and geometry contract keeps its id and keys; the
+  new fields are additive.
+- **A 9:16 example**: `examples/films/khyber-pass/`, the Khyber Pass from NASA SRTM elevation
+  and the OpenStreetMap road, rotated a quarter turn and framed for a tall film.
 
 ## 1.0.0 — 2026-10-27
 

@@ -179,6 +179,12 @@ track for it ("make a construct of X that assembles across this track"). Otherwi
    whole construct in view; use `tour` when the scene's own camera flights should play. Leave
    `--reactivity` at its default unless the user asks for a calmer (0.5) or stronger (1.5) film.
    It takes about an hour for four minutes of film; say so before you start.
+   For a **tall social film (TikTok, Reels, Shorts)**, replace the size and camera with
+   `--format tiktok` (1080 x 1920 at 30 fps, steady). A wide subject does not fill a 9:16 frame, so
+   give the scene a `presentation.framing.portrait` block (yaw, pitch, fit, target, shift): turn a
+   long subject to run up the frame, look along it with a higher pitch, and `shift` it clear of the
+   player's controls at the bottom and right. The tall page also puts its caption at the top and
+   scales its type from the frame width. Details: `docs/FILM.md`.
 4. **Review the film** by sampling frames, for example
    `ffmpeg -i film.mp4 -vf fps=1/10 frame-%02d.png`, and look at them: the build should visibly
    move on with the music and end with the whole construct. Report what you made, its length,

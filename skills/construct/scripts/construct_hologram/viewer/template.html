@@ -40,6 +40,15 @@
   .help { position: absolute; left: 22px; top: 18px; font-size: 10px; letter-spacing: .1em; color: var(--dim); opacity: .75; }
   .labels .label { position: absolute; transform: translate(4px, -50%); padding: 3px 7px; border: 1px solid rgba(255,255,255,.14);
     background: rgba(10,4,12,.72); border-radius: 4px; font-size: 10.5px; white-space: nowrap; letter-spacing: .04em; }
+  /* a tall frame (phone, story, TikTok): type sized by the width, caption at the top and clear of
+     the app's own UI at the bottom and right */
+  body.portrait .caption { left: 7%; right: 7%; top: 8%; bottom: auto; max-width: none; }
+  body.portrait .caption .title { font-size: 4.6vw; line-height: 1.06; letter-spacing: .055em; text-transform: uppercase; }
+  body.portrait .caption .meta { margin-top: 1.2vw; font-size: 1.55vw; letter-spacing: .2em; }
+  body.portrait .labels .label { font-size: 2.15vw; padding: .45vw .95vw; border-radius: .5vw; }
+  body.portrait .legend { font-size: 1.8vw; right: 6%; bottom: 9%; }
+  body.portrait .help { display: none; }
+  body.portrait .rounds { right: 6%; top: 4vw; max-width: 60%; font-size: 1.7vw; }
   .labels .label.left { transform: translate(calc(-100% - 4px), -50%); }
   .labels .label.inferred { border-style: dashed; color: #e9d8c2; }
   .labels .label.traced { color: #d2defc; }

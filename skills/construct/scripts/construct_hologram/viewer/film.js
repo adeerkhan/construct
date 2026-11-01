@@ -38,6 +38,19 @@
   const SCAN = 1, SHIMMER = 4;  // the viewer's event codes
   const SMOOTH_S = 2.0, ACCENT_S = 0.2, PACE = 4;
   window.HOLO_FILM = FILM;
+  let urlShift = null;  // a ?shift= the page was opened with, which wins over the scene's portrait one
+
+  // ------------------------------------------------------------------ a tall frame
+  // A scene may compose itself for a tall screen (`presentation.framing.portrait`: yaw, pitch, fit,
+  // target and a screen-space shift). Film mode is what makes a 9:16 film, so the composition lives
+  // here rather than in the viewer: a page without a film option is still the stock viewer.
+  const ownCameraFor = P.cameraFor;
+  P.cameraFor = function (id) {
+    const fr = this.geo.presentation.framing;
+    if ((this.aspect || 1.6) >= 0.85 || !fr.portrait) return ownCameraFor.call(this, id);
+    this.geo.presentation.framing = Object.assign({}, fr, fr.portrait);  // viewSpec reads yaw and pitch too
+    try { return ownCameraFor.call(this, id); } finally { this.geo.presentation.framing = fr; }
+  };
 
   // ------------------------------------------------------------------ the assembly's length
   const ownTimes = P.assemblyTimes;
@@ -180,6 +193,8 @@
   P.cameraAt = function (t, base) {
     // the viewer flies the scene's tour; for the length of this call it flies the film's instead
     // (camera=steady: a stop that never comes, so no tour and no automatic turn to the open view)
+    const fr = this.geo.presentation.framing, tall = (this.aspect || 1.6) < 0.85;
+    this.opt.shift = tall && fr.portrait && fr.portrait.shift ? (urlShift || fr.portrait.shift) : urlShift;
     const cam = this.geo.animation.camera, own = cam.tour;
     cam.tour = FILM.steady ? [{ view: "hero", at: Infinity }] : this.tourStops();
     try { return ownCamera.call(this, t, base); } finally { cam.tour = own; }
@@ -189,6 +204,16 @@
   function start() {
     const holo = window.HOLO && window.HOLO.hologram;
     if (!holo) return;
+    urlShift = holo.opt.shift;
+    // a tall page gets type sized from its width, clear of a phone player's own controls
+    const sizeClass = () => {
+      const stage = document.getElementById("stage");
+      if (!stage) return;
+      const r = stage.getBoundingClientRect();
+      document.body.classList.toggle("portrait", r.height >= r.width * 1.2);
+    };
+    sizeClass();
+    window.addEventListener("resize", sizeClass);
     holo.schedule = holo.buildSchedule();  // the idle life begins after the film's assembly
     if (FILM.audio) {
       window.HOLO_AUDIO_READY = fetch(FILM.audio).then((res) => res.json())

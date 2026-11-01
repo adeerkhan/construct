@@ -58,6 +58,7 @@ assembly style is `cut` appears at once, so film mode has nothing to pace there.
 Rendering takes a while: every frame is drawn in a browser, about a frame or two a second on a
 laptop, so a four-minute film at 24 frames a second takes roughly an hour.
 
+
 **3. Watch it.** Open `film.mp4`. A quiet opening builds only a little; the louder the music, the
 faster the construct grows; each new section starts a new part of it; and it completes exactly
 when its build time is up.
@@ -127,6 +128,52 @@ as the parts it looks at are built, and it flies a little slower, as the build d
 three times slower, and no longer than 12 seconds unless the scene's own flight is). A flight
 after the build starts as long after the film's build as the scene set it, and a flight before
 the build stays where it was.
+
+## Vertical films: 9:16 for TikTok, Reels and Shorts
+
+A tall film is the same film in a portrait frame. `--format tiktok` is the preset for it:
+
+```sh
+python3 construct_hologram/cli.py video scene.json --out film-9x16.mp4 \
+    --format tiktok --assembly 30 --audio track-audio.json --sound track.wav
+```
+
+It renders at **1080 x 1920** and **30 frames a second**, and holds the camera steady. Any of
+those can still be set by hand: an explicit `--size`, `--fps` or `--camera` wins over the preset.
+
+A construct laid out wide does not fill a tall frame: the camera fits its width, and the rest of
+the frame is empty. So a scene can say how it wants to be shot when the frame is tall
+(`presentation.framing.portrait`), with the same keys as its ordinary framing, plus a screen-space
+shift for the safe area around the construct:
+
+```json
+"presentation": {
+  "framing": {"yaw": 90, "pitch": 18, "fit": 0.92,
+              "portrait": {"yaw": 0, "pitch": 40, "fit": 0.95, "target": "route", "shift": [0, 0.03]}}
+}
+```
+
+The portrait block applies when the page is taller than it is wide (height ≥ 1.2 x width) and
+the page carries film mode: the rendered film, or a live page opened with a film option. A page
+built without one is still the stock viewer, byte for byte. `yaw`, `pitch`, `fit` and `target`
+are read as usual; `shift` moves the framed construct across the frame, in fractions of the
+half-viewport, positive `y` upwards, so it can sit clear of an app's own controls at the bottom
+and right.
+
+Three things help a wide subject in a tall frame:
+
+- **Turn it.** A long subject (a valley, a pass, a road, a skyline) can be rotated a quarter turn
+  in the scene so its length runs up the frame instead of across it. Keep north somewhere in the
+  scene, or say in the `authoring.next` that it was turned.
+- **Look down it.** A camera that looks along the subject's length (`yaw` along its axis, `pitch`
+  35–50° for a landscape) uses the height of the frame, where a side-on view does not.
+- **Compose the safe area.** A phone player covers the bottom fifth and the right edge. The tall
+  page already puts its caption at the top and keeps labels off the bottom; use `shift` to lift a
+  construct that still crowds the player's controls.
+
+The tall page also sets its own type: the caption and labels are sized from the frame's width
+(`vw`), so they read on a phone and in a 1080 x 1920 film. Nothing is burned in beyond the
+construct's own caption; titles and captions for the platform are yours.
 
 ## Preview it in a browser
 

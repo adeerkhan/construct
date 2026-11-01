@@ -170,6 +170,7 @@ class Cli(unittest.TestCase):
         def frames(page, *args, **kwargs):
             seen["film"] = "Construct film mode" in Path(page).read_text(encoding="utf-8")
             seen["extra"] = kwargs["extra"]
+            seen["fps"], seen["size"] = args[2], list(args[4:6])
         with tempfile.TemporaryDirectory() as d, mock.patch.object(render, "frames", side_effect=frames), \
                 mock.patch.object(render, "encode_video"), mock.patch("sys.stdout"):
             features = Path(d, "a.json")
@@ -178,15 +179,28 @@ class Cli(unittest.TestCase):
             self.assertEqual(cli.main(argv + [str(features) if f == "AUDIO" else f for f in flags]), 0)
         return seen
 
+    def page(self, *flags):
+        seen = self.video_page(*flags)
+        return {"film": seen["film"], "extra": seen["extra"]}
+
     def test_a_plain_video_is_the_stock_page(self):
-        self.assertEqual(self.video_page(), {"film": False, "extra": {}})
-        self.assertEqual(self.video_page("--camera", "still"), {"film": False, "extra": {"camera": "still"}})
+        self.assertEqual(self.page(), {"film": False, "extra": {}})
+        self.assertEqual(self.page("--camera", "still"), {"film": False, "extra": {"camera": "still"}})
 
     def test_film_options_reach_the_page(self):
-        self.assertEqual(self.video_page("--camera", "steady"), {"film": True, "extra": {"camera": "steady"}})
-        self.assertEqual(self.video_page("--camera", "tour", "--assembly", "30"), {"film": True, "extra": {"assembly": "30.000"}})
-        seen = self.video_page("--audio", "AUDIO", "--reactivity", "1.5")
+        self.assertEqual(self.page("--camera", "steady"), {"film": True, "extra": {"camera": "steady"}})
+        self.assertEqual(self.page("--camera", "tour", "--assembly", "30"), {"film": True, "extra": {"assembly": "30.000"}})
+        seen = self.page("--audio", "AUDIO", "--reactivity", "1.5")
         self.assertEqual(seen, {"film": True, "extra": {"audio": "audio.json", "reactivity": "1.5"}})
+
+    def test_the_tiktok_preset_is_a_tall_steady_film(self):
+        seen = self.video_page("--format", "tiktok")
+        self.assertEqual((seen["size"], seen["fps"]), ([1080, 1920], 30))
+        self.assertEqual(seen["extra"], {"camera": "steady"})
+        # anything said explicitly still wins over the preset
+        seen = self.video_page("--format", "tiktok", "--size", "720x1280", "--fps", "24", "--camera", "still")
+        self.assertEqual((seen["size"], seen["fps"]), ([720, 1280], 24))
+        self.assertEqual(seen["extra"], {"camera": "still"})
 
     def test_the_skill_knows_the_film_workflow(self):
         text = (HERE / "skill" / "SKILL.md").read_text(encoding="utf-8")
