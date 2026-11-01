@@ -8,3 +8,6 @@ dist/
 .env
 .env.*
 site/
+
+# film renders stay out of the repository; the example keeps its scene, cue and poster
+examples/films/*/*.mp4
