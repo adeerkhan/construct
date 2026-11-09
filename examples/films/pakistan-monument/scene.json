@@ -1,0 +1,696 @@
+{
+  "format": "construct-scene",
+  "version": 2,
+  "id": "pakistan-monument",
+  "title": "Pakistan Monument",
+  "subject": {
+    "category": "architecture",
+    "accuracy": "approximate",
+    "synthetic": false,
+    "summary": "The Pakistan Monument in Islamabad: four large granite petals for the four cultures and three smaller petals for the territories, converging over a star-shaped central platform, with the museum and Freedom Plaza beside them. The petal form, counts, height and dates are documented; the curve of the petals, the star and the plaza are a reconstruction."
+  },
+  "units": "m",
+  "seed": 2007,
+  "sources": [
+    {
+      "id": "request",
+      "kind": "user_request",
+      "title": "The user's request",
+      "rights": "user_private",
+      "ref": "A construct and a 9:16 film of the Pakistan Monument, Islamabad."
+    },
+    {
+      "id": "wiki",
+      "kind": "document",
+      "title": "Pakistan Monument - Wikipedia",
+      "rights": "reference_only",
+      "ref": "https://en.wikipedia.org/wiki/Pakistan_Monument - national monument and heritage museum on the Shakarparian Hills; designed by Arif Masoud, selected 10 July 2003, foundation 25 May 2004, completed 2006, inaugurated 23 March 2007; height 18 m; area 2.8 hectares; four large petals for the four cultures and three smaller petals for the minorities, Azad Kashmir and Gilgit-Baltistan; granite petals, black granite star, stainless steel crescent; museum and Freedom Plaza."
+    },
+    {
+      "id": "design",
+      "kind": "generated",
+      "title": "Scene author's reconstruction",
+      "rights": "synthetic",
+      "ref": "The curved petal walls, the star platform, the plaza and the museum. No photograph or artwork is embedded."
+    }
+  ],
+  "facts": [
+    {
+      "key": "monument.height",
+      "value": 18,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "monument.area",
+      "value": 28000,
+      "unit": "m²",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "2.8 hectares"
+    },
+    {
+      "key": "petals.large",
+      "value": 4,
+      "unit": "petals",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the Punjabi, Baloch, Sindhi and Pakhtun cultures"
+    },
+    {
+      "key": "petals.small",
+      "value": 3,
+      "unit": "petals",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the minorities, Azad Kashmir and Gilgit-Baltistan"
+    },
+    {
+      "key": "construction.completed",
+      "value": 2006,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "inaugurated",
+      "value": "23 March 2007",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "architect",
+      "value": "Arif Masoud",
+      "certainty": "verified",
+      "source": "wiki"
+    }
+  ],
+  "parts": [
+    {
+      "id": "hill",
+      "label": "Shakarparian hill",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          100,
+          8,
+          100
+        ],
+        "anchor": "base",
+        "ribs": 6
+      },
+      "at": [
+        0,
+        -4,
+        0
+      ],
+      "note": "the plateau of the Shakarparian Hills the monument stands on."
+    },
+    {
+      "id": "star-platform",
+      "label": "Star platform",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            14.0
+          ],
+          [
+            3.527,
+            4.854
+          ],
+          [
+            13.315,
+            4.326
+          ],
+          [
+            5.706,
+            -1.854
+          ],
+          [
+            8.229,
+            -11.326
+          ],
+          [
+            0.0,
+            -6.0
+          ],
+          [
+            -8.229,
+            -11.326
+          ],
+          [
+            -5.706,
+            -1.854
+          ],
+          [
+            -13.315,
+            4.326
+          ],
+          [
+            -3.527,
+            4.854
+          ]
+        ],
+        "height": 1.5,
+        "axis": "y"
+      },
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "note": "the five-pointed star platform the seven petals converge over."
+    },
+    {
+      "id": "petal-large",
+      "label": "Large petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "basis": [
+        "petals.large",
+        "monument.height"
+      ],
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0
+          ],
+          [
+            5.25,
+            2
+          ],
+          [
+            6.75,
+            6
+          ],
+          [
+            4.5,
+            10
+          ],
+          [
+            0.0,
+            18
+          ],
+          [
+            -4.5,
+            10
+          ],
+          [
+            -6.75,
+            6
+          ],
+          [
+            -5.25,
+            2
+          ]
+        ],
+        "height": 0.7,
+        "axis": "z"
+      },
+      "at": [
+        9,
+        0,
+        0
+      ],
+      "rotate": [
+        -10,
+        0,
+        0
+      ],
+      "note": "one of the four large petals, 18 m high, leaning outward from the star."
+    },
+    {
+      "id": "petal-large-2",
+      "label": "Large petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0
+          ],
+          [
+            5.25,
+            2
+          ],
+          [
+            6.75,
+            6
+          ],
+          [
+            4.5,
+            10
+          ],
+          [
+            0.0,
+            18
+          ],
+          [
+            -4.5,
+            10
+          ],
+          [
+            -6.75,
+            6
+          ],
+          [
+            -5.25,
+            2
+          ]
+        ],
+        "height": 0.7,
+        "axis": "z"
+      },
+      "at": [
+        -9,
+        0,
+        0
+      ],
+      "rotate": [
+        -10,
+        180,
+        0
+      ]
+    },
+    {
+      "id": "petal-large-3",
+      "label": "Large petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0
+          ],
+          [
+            5.25,
+            2
+          ],
+          [
+            6.75,
+            6
+          ],
+          [
+            4.5,
+            10
+          ],
+          [
+            0.0,
+            18
+          ],
+          [
+            -4.5,
+            10
+          ],
+          [
+            -6.75,
+            6
+          ],
+          [
+            -5.25,
+            2
+          ]
+        ],
+        "height": 0.7,
+        "axis": "z"
+      },
+      "at": [
+        0,
+        0,
+        9
+      ],
+      "rotate": [
+        -10,
+        -90,
+        0
+      ]
+    },
+    {
+      "id": "petal-large-4",
+      "label": "Large petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0
+          ],
+          [
+            5.25,
+            2
+          ],
+          [
+            6.75,
+            6
+          ],
+          [
+            4.5,
+            10
+          ],
+          [
+            0.0,
+            18
+          ],
+          [
+            -4.5,
+            10
+          ],
+          [
+            -6.75,
+            6
+          ],
+          [
+            -5.25,
+            2
+          ]
+        ],
+        "height": 0.7,
+        "axis": "z"
+      },
+      "at": [
+        0,
+        0,
+        -9
+      ],
+      "rotate": [
+        -10,
+        90,
+        0
+      ]
+    },
+    {
+      "id": "petal-small",
+      "label": "Small petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "basis": [
+        "petals.small"
+      ],
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.1,
+            1.2
+          ],
+          [
+            2.7,
+            3.6
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            0.0,
+            10.8
+          ],
+          [
+            -1.8,
+            6.0
+          ],
+          [
+            -2.7,
+            3.6
+          ],
+          [
+            -2.1,
+            1.2
+          ]
+        ],
+        "height": 0.6,
+        "axis": "z"
+      },
+      "at": [
+        6.4,
+        0,
+        6.4
+      ],
+      "rotate": [
+        -10,
+        -45,
+        0
+      ]
+    },
+    {
+      "id": "petal-small-2",
+      "label": "Small petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.1,
+            1.2
+          ],
+          [
+            2.7,
+            3.6
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            0.0,
+            10.8
+          ],
+          [
+            -1.8,
+            6.0
+          ],
+          [
+            -2.7,
+            3.6
+          ],
+          [
+            -2.1,
+            1.2
+          ]
+        ],
+        "height": 0.6,
+        "axis": "z"
+      },
+      "at": [
+        -6.4,
+        0,
+        6.4
+      ],
+      "rotate": [
+        -10,
+        45,
+        0
+      ]
+    },
+    {
+      "id": "petal-small-3",
+      "label": "Small petals",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.1,
+            1.2
+          ],
+          [
+            2.7,
+            3.6
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            0.0,
+            10.8
+          ],
+          [
+            -1.8,
+            6.0
+          ],
+          [
+            -2.7,
+            3.6
+          ],
+          [
+            -2.1,
+            1.2
+          ]
+        ],
+        "height": 0.6,
+        "axis": "z"
+      },
+      "at": [
+        0,
+        0,
+        -9
+      ],
+      "rotate": [
+        -10,
+        -90,
+        0
+      ]
+    },
+    {
+      "id": "plaza",
+      "label": "Freedom Plaza",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "grid",
+        "size": [
+          44,
+          34
+        ],
+        "divisions": 10
+      },
+      "at": [
+        26,
+        0.2,
+        0
+      ],
+      "note": "the large piazza between the monument and the museum."
+    },
+    {
+      "id": "museum",
+      "label": "Museum",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "box",
+        "size": [
+          26,
+          7,
+          18
+        ],
+        "anchor": "base",
+        "ribs": 5
+      },
+      "at": [
+        46,
+        0,
+        0
+      ],
+      "note": "the Pakistan Monument Museum beside the plaza."
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-petals",
+      "text": "Petals",
+      "part": "petal-large"
+    },
+    {
+      "id": "a-star",
+      "text": "Star platform",
+      "part": "star-platform"
+    },
+    {
+      "id": "a-plaza",
+      "text": "Freedom Plaza",
+      "part": "plaza"
+    },
+    {
+      "id": "a-museum",
+      "text": "Museum",
+      "part": "museum"
+    }
+  ],
+  "presentation": {
+    "framing": {
+      "yaw": 32,
+      "pitch": 14,
+      "fit": 0.95,
+      "portrait": {
+        "yaw": 35,
+        "pitch": 14,
+        "fit": 0.32,
+        "shift": [
+          0,
+          0.12
+        ]
+      }
+    },
+    "atmosphere": {
+      "haze": 0.65,
+      "motes": 0.35
+    }
+  },
+  "animation": {
+    "assembly": {
+      "style": "ceremony",
+      "seconds": 6.0,
+      "interference": true
+    },
+    "idle": {
+      "life": "calm",
+      "events": [
+        "scan",
+        "sweep",
+        "shimmer"
+      ],
+      "cadence": [
+        6,
+        12
+      ],
+      "strength": 0.45
+    },
+    "camera": {
+      "drift": 3,
+      "breathe": 0.02
+    }
+  },
+  "authoring": {
+    "tier": "standard",
+    "research": "done",
+    "sources": [
+      "wiki"
+    ],
+    "review_rounds": 0,
+    "outcome": "self-reviewed",
+    "next": [
+      "the petals are flat granite walls; the real ones are curved and cantilevered",
+      "the star, crescent and the inner murals are only suggested"
+    ]
+  }
+}

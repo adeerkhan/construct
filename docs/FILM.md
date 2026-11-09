@@ -185,13 +185,15 @@ the construct, so the empty part of a tall frame carries something to read:
 python3 construct_hologram/cli.py video scene.json --out film-9x16.mp4 --format tiktok \
     --title "Bab-e-Khyber (Khyber Gate)" \
     --facts pass.length,landi_kotal.elevation,ali_masjid.elevation \
+    --credit @adeerkhan \
     --assembly 30 --audio track-audio.json --sound track.wav
 ```
 
 The title is split at a trailing parenthesis, so `Bab-e-Khyber (Khyber Gate)` sets
 **BAB-E-KHYBER** with **KHYBER GATE** beneath it. `--facts` names fact keys from the scene; without
 it the slate takes the first four verified facts that have a unit. The labels are the scene's
-identity annotations (its marked places), in scene order. The slate replaces the page's caption,
+annotations (its marked places), in scene order. `--credit` adds a handle under the data line.
+The slate replaces the page's caption,
 which is hidden while it is on; without `--title` or `--facts` a film keeps the stock caption.
 
 ## Preview it in a browser

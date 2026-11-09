@@ -1,0 +1,635 @@
+{
+  "format": "construct-scene",
+  "version": 2,
+  "id": "tarbela-dam",
+  "title": "Tarbela Dam",
+  "subject": {
+    "category": "architecture",
+    "accuracy": "approximate",
+    "synthetic": false,
+    "summary": "Tarbela Dam on the Indus: the largest earth-filled dam in the world, a 2,743 m rock-and-earth embankment 143 m high above the riverbed, with its service and auxiliary spillways, five outlet tunnels, a 4,888 MW powerhouse and the reservoir upstream. Drawn at about 1:6.7 so the whole dam fits one construct; the dam's height, length, spillways, tunnels and capacity are documented, while the valley, the reservoir's extent and the structures are a reconstruction."
+  },
+  "units": "m",
+  "seed": 1976,
+  "sources": [
+    {
+      "id": "request",
+      "kind": "user_request",
+      "title": "The user's request",
+      "rights": "user_private",
+      "ref": "A construct and a 9:16 film of Tarbela Dam on the Indus."
+    },
+    {
+      "id": "wiki",
+      "kind": "document",
+      "title": "Tarbela Dam - Wikipedia",
+      "rights": "reference_only",
+      "ref": "https://en.wikipedia.org/wiki/Tarbela_Dam - earth-filled dam on the Indus, the largest in the world; 143 m above the riverbed and a 2,743 m main wall; service spillway 18,406 m3/s and auxiliary spillway 24,070 m3/s; five tunnels, hydropower from tunnels 1-4 with 17 generators totalling 4,888 MW; reservoir 80.5 km long and 250 km2; completed 1976."
+    },
+    {
+      "id": "design",
+      "kind": "generated",
+      "title": "Scene author's reconstruction",
+      "rights": "synthetic",
+      "ref": "The valley, the reservoir's extent, the spillway chute and the powerhouse arrangement. No photograph or artwork is embedded."
+    }
+  ],
+  "facts": [
+    {
+      "key": "dam.height",
+      "value": 143,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "above the riverbed"
+    },
+    {
+      "key": "dam.length",
+      "value": 2743,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the main earth-and-rock-fill wall"
+    },
+    {
+      "key": "reservoir.area",
+      "value": 250,
+      "unit": "km²",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "reservoir.length",
+      "value": 80.5,
+      "unit": "km",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "power.capacity",
+      "value": 4888,
+      "unit": "MW",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "17 generators fed by tunnels 1 to 4"
+    },
+    {
+      "key": "spillway.service",
+      "value": 18406,
+      "unit": "m³/s",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "tunnels",
+      "value": 5,
+      "unit": "tunnels",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "tunnels 1-4 carry the turbines; tunnel 5 is for irrigation"
+    },
+    {
+      "key": "construction.completed",
+      "value": 1976,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "dam.type",
+      "value": "earth and rock fill",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the largest earth-filled dam in the world"
+    }
+  ],
+  "parts": [
+    {
+      "id": "valley",
+      "label": "Valley",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          105,
+          4,
+          500
+        ],
+        "anchor": "base",
+        "ribs": 8
+      },
+      "at": [
+        0,
+        -2,
+        0
+      ],
+      "note": "the Indus valley floor the dam crosses."
+    },
+    {
+      "id": "abutment-north",
+      "label": "Abutment",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "cone",
+        "radius_bottom": 70,
+        "radius_top": 6,
+        "height": 35,
+        "segments": 8,
+        "ribs": 8
+      },
+      "at": [
+        0,
+        2,
+        225
+      ],
+      "note": "the north abutment hill the dam meets."
+    },
+    {
+      "id": "abutment-south",
+      "label": "Abutment",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "cone",
+        "radius_bottom": 70,
+        "radius_top": 6,
+        "height": 35,
+        "segments": 8,
+        "ribs": 8
+      },
+      "at": [
+        0,
+        2,
+        -225
+      ]
+    },
+    {
+      "id": "reservoir",
+      "label": "Reservoir",
+      "role": "ground",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 0,
+      "basis": [
+        "reservoir.area",
+        "reservoir.length"
+      ],
+      "shape": {
+        "type": "grid",
+        "size": [
+          120,
+          450
+        ],
+        "divisions": 20
+      },
+      "at": [
+        -105,
+        1,
+        0
+      ],
+      "note": "Tarbela Lake upstream; the real reservoir is 80.5 km long and 250 km2, drawn here at display scale."
+    },
+    {
+      "id": "main-dam",
+      "label": "Main dam",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 1,
+      "basis": [
+        "dam.height",
+        "dam.length",
+        "dam.type"
+      ],
+      "shape": {
+        "type": "loft",
+        "sections": [
+          [
+            -205.65,
+            0.1,
+            0,
+            0.1,
+            0.1
+          ],
+          [
+            -187.5,
+            45,
+            0,
+            21.45,
+            1.2
+          ],
+          [
+            187.5,
+            45,
+            0,
+            21.45,
+            1.2
+          ],
+          [
+            205.65,
+            0.1,
+            0,
+            0.1,
+            0.1
+          ]
+        ],
+        "round": 0.2
+      },
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "note": "the 2,743 m earth-and-rock-fill embankment, 143 m high, drawn with a 600 m base and a 16 m crest."
+    },
+    {
+      "id": "crest",
+      "label": "Crest",
+      "role": "detail",
+      "certainty": "inferred",
+      "stage": 1,
+      "shape": {
+        "type": "box",
+        "size": [
+          2.4,
+          0.15,
+          375
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        0,
+        21.45,
+        0
+      ],
+      "note": "the crest road along the top of the dam."
+    },
+    {
+      "id": "spillway",
+      "label": "Spillway",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "box",
+        "size": [
+          18,
+          12,
+          21
+        ],
+        "anchor": "base",
+        "ribs": 7
+      },
+      "at": [
+        54,
+        0,
+        135
+      ],
+      "note": "the concrete service spillway on the right bank, 18,406 m3/s."
+    },
+    {
+      "id": "spillway-chute",
+      "label": "Spillway chute",
+      "role": "structure",
+      "certainty": "inferred",
+      "stage": 3,
+      "shape": {
+        "type": "box",
+        "size": [
+          9,
+          0.3,
+          42
+        ],
+        "anchor": "base"
+      },
+      "at": [
+        72,
+        1.5,
+        135
+      ],
+      "rotate": [
+        0,
+        0,
+        -18
+      ],
+      "note": "the chute carrying spill water down to the river."
+    },
+    {
+      "id": "powerhouse",
+      "label": "Powerhouse",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "box",
+        "size": [
+          21,
+          7.5,
+          39
+        ],
+        "anchor": "base",
+        "ribs": 8
+      },
+      "at": [
+        64.5,
+        0,
+        -105
+      ],
+      "note": "the main powerhouse on the right bank."
+    },
+    {
+      "id": "generators",
+      "label": "Generators",
+      "role": "detail",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 2,
+      "basis": [
+        "power.capacity"
+      ],
+      "shape": {
+        "type": "points",
+        "count": 17,
+        "region": {
+          "box": [
+            18,
+            6,
+            36
+          ]
+        },
+        "sprite": "disc",
+        "size_px": 6
+      },
+      "at": [
+        64.5,
+        3.75,
+        -105
+      ],
+      "note": "the 17 generators, 4,888 MW in all."
+    },
+    {
+      "id": "tunnels",
+      "label": "Tunnels",
+      "role": "identity",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 3,
+      "basis": [
+        "tunnels"
+      ],
+      "shape": {
+        "type": "paths",
+        "paths": [
+          [
+            [
+              -37.5,
+              9.3,
+              -135.0
+            ],
+            [
+              -18.0,
+              8.4,
+              -135.0
+            ],
+            [
+              9.0,
+              5.7,
+              -135.0
+            ],
+            [
+              42.0,
+              3.9,
+              -135.0
+            ],
+            [
+              58.5,
+              3.9,
+              -135.0
+            ]
+          ],
+          [
+            [
+              -37.5,
+              9.3,
+              -67.5
+            ],
+            [
+              -18.0,
+              8.4,
+              -67.5
+            ],
+            [
+              9.0,
+              5.7,
+              -67.5
+            ],
+            [
+              42.0,
+              3.9,
+              -67.5
+            ],
+            [
+              58.5,
+              3.9,
+              -67.5
+            ]
+          ],
+          [
+            [
+              -37.5,
+              9.3,
+              0.0
+            ],
+            [
+              -18.0,
+              8.4,
+              0.0
+            ],
+            [
+              9.0,
+              5.7,
+              0.0
+            ],
+            [
+              42.0,
+              3.9,
+              0.0
+            ],
+            [
+              58.5,
+              3.9,
+              0.0
+            ]
+          ],
+          [
+            [
+              -37.5,
+              9.3,
+              67.5
+            ],
+            [
+              -18.0,
+              8.4,
+              67.5
+            ],
+            [
+              9.0,
+              5.7,
+              67.5
+            ],
+            [
+              42.0,
+              3.9,
+              67.5
+            ],
+            [
+              58.5,
+              3.9,
+              67.5
+            ]
+          ],
+          [
+            [
+              -37.5,
+              9.3,
+              135.0
+            ],
+            [
+              -18.0,
+              8.4,
+              135.0
+            ],
+            [
+              9.0,
+              5.7,
+              135.0
+            ],
+            [
+              42.0,
+              3.9,
+              135.0
+            ],
+            [
+              58.5,
+              3.9,
+              135.0
+            ]
+          ]
+        ]
+      },
+      "look": {
+        "line": "dashed"
+      },
+      "note": "the five outlet tunnels; four carry the turbines, the fifth irrigation."
+    },
+    {
+      "id": "river",
+      "label": "Indus",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 3,
+      "shape": {
+        "type": "grid",
+        "size": [
+          90,
+          450
+        ],
+        "divisions": 12
+      },
+      "at": [
+        97.5,
+        1,
+        0
+      ],
+      "note": "the Indus below the dam."
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-dam",
+      "text": "Main dam",
+      "part": "main-dam"
+    },
+    {
+      "id": "a-spillway",
+      "text": "Spillway",
+      "part": "spillway"
+    },
+    {
+      "id": "a-power",
+      "text": "Powerhouse",
+      "part": "powerhouse"
+    },
+    {
+      "id": "a-reservoir",
+      "text": "Reservoir",
+      "part": "reservoir"
+    },
+    {
+      "id": "a-tunnels",
+      "text": "Tunnels",
+      "part": "tunnels"
+    }
+  ],
+  "presentation": {
+    "framing": {
+      "yaw": 90,
+      "pitch": 10,
+      "fit": 0.95,
+      "portrait": {
+        "yaw": 0,
+        "pitch": 12,
+        "fit": 0.75,
+        "target": "main-dam",
+        "shift": [
+          0,
+          0.05
+        ]
+      }
+    },
+    "atmosphere": {
+      "haze": 0.6,
+      "motes": 0.3
+    }
+  },
+  "animation": {
+    "assembly": {
+      "style": "ceremony",
+      "seconds": 6.0,
+      "interference": true
+    },
+    "idle": {
+      "life": "calm",
+      "events": [
+        "scan",
+        "sweep",
+        "shimmer"
+      ],
+      "cadence": [
+        6,
+        12
+      ],
+      "strength": 0.45
+    },
+    "camera": {
+      "drift": 3,
+      "breathe": 0.02
+    }
+  },
+  "authoring": {
+    "tier": "standard",
+    "research": "done",
+    "sources": [
+      "wiki"
+    ],
+    "review_rounds": 0,
+    "outcome": "self-reviewed",
+    "next": [
+      "the reservoir and river are drawn at display scale, not their real 80.5 km",
+      "the spillway gates and the tunnel interiors are not modelled"
+    ]
+  }
+}

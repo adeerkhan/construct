@@ -36,6 +36,7 @@
   const SLATE = q.get("slate") === "1" ? {
     title: q.get("title") || null,
     facts: (q.get("facts") || "").split(",").map((x) => x.trim()).filter(Boolean),
+    credit: q.get("credit") || null,
   } : null;
   if (!FILM.assembly && !FILM.audio && !FILM.steady && !SLATE) return;  // no film option: the stock viewer, untouched
   const P = HV.Hologram.prototype;
@@ -236,14 +237,12 @@
     const picked = SLATE.facts.length
       ? SLATE.facts.map((k) => all.find((f) => f.key === k)).filter(Boolean)
       : all.filter((f) => f.certainty === "verified" && f.unit && !String(f.key).startsWith("terrain.")).slice(0, 4);
-    const labels = (geo.annotations || []).filter((a) => {
-      const part = (geo.parts || []).find((p) => p.id === a.part);
-      return !part || part.role === "identity" || part.role === "ground";
-    }).map((a) => a.text);
+    const labels = (geo.annotations || []).map((a) => a.text);
     const head = node("div", "head");
     head.appendChild(node("div", "title", split ? split[1] : text));
     if (split) head.appendChild(node("div", "subtitle", split[2]));
     if (data.length) head.appendChild(node("div", "data", "DATA \u00b7 " + data.join("  \u00b7  ")));
+    if (SLATE.credit) head.appendChild(node("div", "credit", SLATE.credit));
     wrap.appendChild(head);
     const info = node("div", "info");
     info.appendChild(node("div", "rule"));

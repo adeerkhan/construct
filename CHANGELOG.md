@@ -519,6 +519,11 @@ side, printed as worksheets and cited. The story: [release notes](docs/releases/
   evidence (parts that do not cite what they were read from, traced parts never compared).
 ## Unreleased
 
+- **Three more 9:16 films**: `examples/films/minar-e-pakistan`, `examples/films/pakistan-monument`
+  and `examples/films/tarbela-dam`, each with its title, data reference, labels, facts and the
+  `@adeerkhan` credit. The slate's labels now list every annotation the scene names, not only
+  its identity and ground parts.
+- **`--credit`**: `video --credit @adeerkhan` prints a handle in the slate, under the data line.
 - **Vertical film mode for TikTok, Reels and Shorts** ([FILM.md](docs/FILM.md#vertical-films-916-for-tiktok-reels-and-shorts)):
   `video --format tiktok` renders 1080 x 1920 at 30 fps with the steady camera (an explicit
   `--size`, `--fps` or `--camera` still wins). A scene can compose itself for a tall frame with

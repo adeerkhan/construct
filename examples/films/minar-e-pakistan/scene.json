@@ -1,0 +1,346 @@
+{
+  "format": "construct-scene",
+  "version": 2,
+  "id": "minar-e-pakistan",
+  "title": "Minar-e-Pakistan",
+  "subject": {
+    "category": "architecture",
+    "accuracy": "documented",
+    "synthetic": false,
+    "summary": "Minar-e-Pakistan in Lahore: the 70 m tower raised on a five-pointed star platform, commemorating the Lahore Resolution of 23 March 1940. The tower's height, its flower-like base and the star platform are documented; the crescent pools, the inscriptions and the park are a reconstruction."
+  },
+  "units": "m",
+  "seed": 1960,
+  "sources": [
+    {
+      "id": "request",
+      "kind": "user_request",
+      "title": "The user's request",
+      "rights": "user_private",
+      "ref": "A construct and a 9:16 film of Minar-e-Pakistan, Lahore."
+    },
+    {
+      "id": "wiki",
+      "kind": "document",
+      "title": "Minar-e-Pakistan - Wikipedia",
+      "rights": "reference_only",
+      "ref": "https://en.wikipedia.org/wiki/Minar-e-Pakistan - built 1960-1968 in Greater Iqbal Park; designed by Nasreddin Murat-Khan; the base rises 8 m and the tower 62 m on it (about 70 m total); ten unfolding petals of the flower-like base are 9 m high; the star-shaped platform is about 97.5 m across; two crescent pools; the small steel dome and pinnacle."
+    },
+    {
+      "id": "design",
+      "kind": "generated",
+      "title": "Scene author's reconstruction",
+      "rights": "synthetic",
+      "ref": "The crescent pools, the inscriptions, the park and the staging. No photograph or artwork is embedded."
+    }
+  ],
+  "facts": [
+    {
+      "key": "minaret.total.height",
+      "value": 70,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "about 70 m above the ground: an 8 m base and a 62 m tower"
+    },
+    {
+      "key": "minaret.tower.height",
+      "value": 62,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "minaret.base.height",
+      "value": 8,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "minaret.petals.height",
+      "value": 9,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the ten unfolding petals of the flower-like base"
+    },
+    {
+      "key": "minaret.platform.diameter",
+      "value": 97.5,
+      "unit": "m",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the circular diameter of the five-pointed star platform"
+    },
+    {
+      "key": "construction.start",
+      "value": 1960,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "construction.completed",
+      "value": 1968,
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "architect",
+      "value": "Nasreddin Murat-Khan",
+      "certainty": "verified",
+      "source": "wiki"
+    },
+    {
+      "key": "resolution",
+      "value": "23 March 1940",
+      "certainty": "verified",
+      "source": "wiki",
+      "note": "the Lahore Resolution the tower commemorates"
+    }
+  ],
+  "parts": [
+    {
+      "id": "plaza",
+      "label": "Plaza",
+      "role": "ground",
+      "certainty": "inferred",
+      "stage": 0,
+      "shape": {
+        "type": "box",
+        "size": [
+          150,
+          1,
+          150
+        ],
+        "anchor": "base",
+        "ribs": 12
+      },
+      "at": [
+        0,
+        -1,
+        0
+      ],
+      "note": "the paved plaza of Greater Iqbal Park around the monument."
+    },
+    {
+      "id": "star-platform",
+      "label": "Star platform",
+      "role": "mass",
+      "certainty": "inferred",
+      "stage": 0,
+      "basis": [
+        "minaret.base.height",
+        "minaret.platform.diameter"
+      ],
+      "shape": {
+        "type": "extrude",
+        "profile": [
+          [
+            0.0,
+            48.75
+          ],
+          [
+            12.3435,
+            16.9894
+          ],
+          [
+            46.364,
+            15.0646
+          ],
+          [
+            19.9722,
+            -6.4894
+          ],
+          [
+            28.6545,
+            -39.4396
+          ],
+          [
+            0.0,
+            -21.0
+          ],
+          [
+            -28.6545,
+            -39.4396
+          ],
+          [
+            -19.9722,
+            -6.4894
+          ],
+          [
+            -46.364,
+            15.0646
+          ],
+          [
+            -12.3435,
+            16.9894
+          ]
+        ],
+        "height": 8,
+        "axis": "y"
+      },
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "note": "the five-pointed star platform, about 97.5 m across and 8 m high."
+    },
+    {
+      "id": "flower-base",
+      "label": "Flower base",
+      "role": "identity",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 0,
+      "basis": [
+        "minaret.petals.height"
+      ],
+      "shape": {
+        "type": "cylinder",
+        "radius": 12,
+        "height": 9,
+        "segments": 10,
+        "ribs": 10,
+        "rings": 1
+      },
+      "at": [
+        0,
+        8,
+        0
+      ],
+      "note": "the ten unfolding petals of the flower-like base, 9 m high."
+    },
+    {
+      "id": "shaft",
+      "label": "Tower",
+      "role": "identity",
+      "certainty": "verified",
+      "source": "wiki",
+      "stage": 1,
+      "basis": [
+        "minaret.tower.height"
+      ],
+      "shape": {
+        "type": "tower",
+        "radius": 5.2,
+        "height": 45,
+        "sides": 8,
+        "taper": 0.85,
+        "eave": 0,
+        "roof": "none",
+        "windows": [
+          4,
+          1
+        ]
+      },
+      "at": [
+        0,
+        17,
+        0
+      ],
+      "note": "the fluted shaft, rising 45 m to the dome; the tower stands 62 m on its base."
+    },
+    {
+      "id": "dome",
+      "label": "Dome",
+      "role": "identity",
+      "certainty": "inferred",
+      "stage": 2,
+      "shape": {
+        "type": "sphere",
+        "radii": [
+          4.6,
+          3.2,
+          4.6
+        ]
+      },
+      "at": [
+        0,
+        62,
+        0
+      ],
+      "note": "the small steel dome on the top (the construct draws it from the description)."
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-tower",
+      "text": "Tower 70 m",
+      "part": "shaft"
+    },
+    {
+      "id": "a-base",
+      "text": "Flower base",
+      "part": "flower-base"
+    },
+    {
+      "id": "a-star",
+      "text": "Star platform",
+      "part": "star-platform"
+    },
+    {
+      "id": "a-dome",
+      "text": "Dome",
+      "part": "dome"
+    }
+  ],
+  "presentation": {
+    "framing": {
+      "yaw": 26,
+      "pitch": 11,
+      "fit": 0.95,
+      "portrait": {
+        "yaw": 24,
+        "pitch": 9,
+        "fit": 0.55,
+        "shift": [
+          0,
+          0.1
+        ]
+      }
+    },
+    "atmosphere": {
+      "haze": 0.65,
+      "motes": 0.35
+    }
+  },
+  "animation": {
+    "assembly": {
+      "style": "ceremony",
+      "seconds": 6.0,
+      "interference": true
+    },
+    "idle": {
+      "life": "calm",
+      "events": [
+        "scan",
+        "sweep",
+        "shimmer"
+      ],
+      "cadence": [
+        6,
+        12
+      ],
+      "strength": 0.45
+    },
+    "camera": {
+      "drift": 3,
+      "breathe": 0.02
+    }
+  },
+  "authoring": {
+    "tier": "standard",
+    "research": "done",
+    "sources": [
+      "wiki"
+    ],
+    "review_rounds": 0,
+    "outcome": "self-reviewed",
+    "next": [
+      "the crescent pools, the inscriptions and the park planting are not modelled",
+      "the shaft is a plain fluted tower; the real one carries relief work"
+    ]
+  }
+}

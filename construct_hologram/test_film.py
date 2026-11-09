@@ -201,6 +201,11 @@ class Cli(unittest.TestCase):
         self.assertTrue(seen["film"])
         self.assertEqual(seen["extra"], {"slate": "1", "caption": "0", "facts": "pass.length,road.length"})
 
+    def test_a_credit_prints_in_the_slate(self):
+        seen = self.page("--credit", "@adeerkhan")
+        self.assertTrue(seen["film"])
+        self.assertEqual(seen["extra"], {"slate": "1", "caption": "0", "credit": "@adeerkhan"})
+
     def test_the_tiktok_preset_is_a_tall_steady_film(self):
         seen = self.video_page("--format", "tiktok")
         self.assertEqual((seen["size"], seen["fps"]), ([1080, 1920], 30))
