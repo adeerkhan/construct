@@ -1,4 +1,0 @@
-audit: PASS (0 errors, 0 warnings)
-  size 152 x 90 x 168.65 m
-  2044 lines, 834 triangles, 0 points, 0 moving copies
-  evidence-backed key parts: 1 of 10
