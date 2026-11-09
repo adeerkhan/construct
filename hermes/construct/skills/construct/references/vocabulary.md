@@ -169,7 +169,8 @@ the L key. Mark inferred or decorative content in the text ("Beam (decorative)")
 
 ```json
 "presentation": {
-  "framing": {"yaw": 30, "pitch": 18, "fit": 1.0, "target": null},
+  "framing": {"yaw": 30, "pitch": 18, "fit": 1.0, "target": null,
+              "portrait": {"yaw": 0, "pitch": 40, "fit": 0.95, "target": "route", "shift": [0, 0.03]}},
   "views": [{"id": "detail", "label": "Detail", "yaw": 20, "pitch": 8, "distance": 1.5, "target": "lantern"}],
   "atmosphere": {"haze": 0.7, "scanlines": true, "vignette": true, "grid": true, "projector": false, "motes": 0.4},
   "occlusion": "xray", "certainty_style": "subtle", "background": "deep", "float": 0
@@ -181,7 +182,11 @@ that part alone; `distance` multiplies the distance fitted to that target (or to
 object without one), so a small target with `distance: 1` is already a close-up — raise it
 (1.5–3) to keep context. `review` captures each of your views as `view-<id>.png`. A view named
 `open` is the one that best shows the opened pose; give one whenever the object has
-articulations. `projector` draws an emitter with
+articulations. `framing.portrait` is the same composition for a frame taller than it is wide
+(a phone, a story, a TikTok): the usual `yaw`, `pitch`, `fit` and `target`, plus `shift`
+`[x, y]` (fractions of the half-viewport, positive `y` upwards) to keep it clear of a player's
+controls. It applies to a page that carries film mode (`build --film`, or `video` with a film
+option), whenever height ≥ 1.2 x width. `projector` draws an emitter with
 light rays and rising motes under small objects; `float` drops the survey ground below a
 hovering subject; `certainty_style: "explicit"` dashes everything inferred.
 
